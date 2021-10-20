@@ -1,0 +1,84 @@
+/*
+    Car component styles
+*/
+
+.car {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 310px;
+
+	.car-box {
+		width: calc(100% - 40px);
+		background: rgb(241, 241, 241);
+		display: flex;
+		flex-direction: column;
+		padding: 0 10px 0 10px;
+		border-radius: 20px;
+		box-shadow: -5px -5px 10px white, 2px 2px 5px rgba(150, 150, 150, 0.4);
+	}
+
+	.row {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		padding: 10px 0 10px 0;
+	}
+
+	.place {
+		width: 50px;
+		height: 50px;
+		border-radius: 5px;
+		box-shadow: 0px 0px 1px black;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		@include transition;
+		background: white;
+		cursor: pointer;
+		&:hover {
+			background: rgb(245, 245, 245);
+		}
+	}
+
+	.place-label {
+		font-size: 7pt;
+		padding: 10px 0 0 0;
+	}
+
+	.space {
+		box-shadow: none;
+		background: transparent;
+		pointer-events: none;
+	}
+
+	.vehicle-number,
+	.vehicle-caption {
+		text-align: center;
+	}
+
+	.vehicle-number {
+		padding: 10px 0 0 0;
+	}
+
+	.icon {
+		pointer-events: none;
+		font-size: 15pt;
+	}
+
+	.vehicle-caption {
+		padding: 10px;
+		pointer-events: none;
+		text-align: center;
+		font-size: 11pt;
+	}
+
+	.driver {
+		background: rgb(225, 225, 225);
+		cursor: initial;
+		&:hover {
+			background: rgb(225, 225, 225);
+		}
+	}
+}

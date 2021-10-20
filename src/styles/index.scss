@@ -1,0 +1,66 @@
+/*
+    Setup global styles
+*/
+
+body {
+	background: rgb(230, 230, 230);
+}
+
+* {
+	font-family: sans-serif;
+}
+
+html,
+body,
+#root,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+select {
+	margin: 0;
+}
+
+/*
+    Global classes
+*/
+
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.text {
+	color: rgb(80, 80, 80);
+	padding: 0;
+	margin: 0;
+}
+
+@mixin transition($duration: 0.2s) {
+	transition: all $duration ease-out;
+}
+
+/*
+	Import all component styles
+*/
+
+@import "./App.scss";
+@import "./Loader.scss";
+@import "./Car.scss";

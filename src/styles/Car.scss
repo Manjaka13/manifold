@@ -74,7 +74,8 @@
 		font-size: 11pt;
 	}
 
-	.driver {
+	.driver,
+	.person {
 		background: rgb(225, 225, 225);
 		cursor: initial;
 		&:hover {

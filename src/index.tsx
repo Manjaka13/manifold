@@ -1,5 +1,5 @@
 /*
-    App main entry
+    Entry point
 */
 
 import React from "react";

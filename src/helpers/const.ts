@@ -1,3 +1,7 @@
+/*
+	Exports our constants from here
+*/
+
 import { IAxiosHeaders } from "../types";
 
 export const BASE_URL: string = "http://localhost:5000";

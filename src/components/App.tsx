@@ -20,6 +20,7 @@ export default function App(): JSX.Element {
 		e.preventDefault();
 		setCaption("");
 		setLoading(true);
+		// Build the params to be sent
 		const params = {
 			name: refName?.current?.value,
 			telephone: refTelephone?.current?.value,
@@ -31,6 +32,7 @@ export default function App(): JSX.Element {
 		};
 		console.clear();
 		console.log(params);
+		// Simulates waiting process
 		setTimeout(() => {
 			setLoading(false);
 			setCaption("Personne inscrite avec succès !");
@@ -44,7 +46,7 @@ export default function App(): JSX.Element {
 				<div className="input-group">
 					<h2 className="underline input-group-title">Informations personnelles</h2>
 					<div className="group">
-						{/* Name */}
+						{/* First name and last name */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="name">
 								Nom entier *
@@ -58,7 +60,7 @@ export default function App(): JSX.Element {
 								required
 							/>
 						</div>
-						{/* Appelation */}
+						{/* Calling name */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="appelation">
 								Appelation *
@@ -74,14 +76,14 @@ export default function App(): JSX.Element {
 						</div>
 					</div>
 					<div className="group">
-						{/* Date de naissance */}
+						{/* Birthday */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="birthday">
 								Date de naissance
 							</label>
 							<input className="input" name="birthday" type="date" ref={refBirthday} />
 						</div>
-						{/* Telephone */}
+						{/* Phone */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="telephone">
 								Téléphone
@@ -94,7 +96,7 @@ export default function App(): JSX.Element {
 								ref={refTelephone}
 							/>
 						</div>
-						{/* CIN */}
+						{/* National ID number */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="CIN">
 								CIN
@@ -112,7 +114,7 @@ export default function App(): JSX.Element {
 				<div className="input-group">
 					<h2 className="underline input-group-title">Informations de voyage</h2>
 					<div className="group">
-						{/* Date de voyage */}
+						{/* Travel date */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="travelDate">
 								Date du voyage *
@@ -125,7 +127,7 @@ export default function App(): JSX.Element {
 								required
 							/>
 						</div>
-						{/* CIN */}
+						{/* Destination place */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="destination">
 								Destination
@@ -139,8 +141,8 @@ export default function App(): JSX.Element {
 							/>
 						</div>
 					</div>
+					{/* The car */}
 					<div className="group">
-						{/* Voiture */}
 						<div className="input-box">
 							<label className="bold label" htmlFor="car">
 								Numéro de la voiture *
@@ -157,13 +159,18 @@ export default function App(): JSX.Element {
 						</figure>
 					</div>
 				</div>
+
 				{/* Submit params */}
 				{!loading && (
 					<button className="submit" type="submit">
 						S'inscrire
 					</button>
 				)}
+
+				{/* Loading */}
 				{loading && <Loader />}
+
+				{/* Error and success captions */}
 				<p className="caption">{caption}</p>
 			</form>
 		</div>

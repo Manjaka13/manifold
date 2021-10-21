@@ -1,19 +1,29 @@
+/*
+	For displaying the car component
+*/
+
 import React, { useState } from "react";
+// We use uuid for generating unique keys
 import { v4 as uniqueKey } from "uuid";
+// Import icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserTie } from "@fortawesome/free-solid-svg-icons";
 
+// Register our icons for later use
 library.add(faUser, faUserTie);
 
-export default function Car(): JSX.Element {
+const Car: React.FC = (): JSX.Element => {
+	let placeIndex = 0;
+	// This represents the car places
 	const [places, setPlaces] = useState<Array<Array<string>>>([
 		["driver", "", ""],
 		["", "", "", "", ""],
 		["", "", "", "space", ""],
 		["Kanto", "", "", "", ""],
 	]);
-	let placeIndex = 0;
+
+	// Map our places to JSX elements
 	const mappedPlaces = places.map((placesRow: Array<string>) => {
 		const arr: Array<JSX.Element> = [];
 		for (const place of placesRow) {
@@ -56,4 +66,6 @@ export default function Car(): JSX.Element {
 			<p className="text vehicle-caption">Arrière du véhicule</p>
 		</div>
 	);
-}
+};
+
+export default Car;

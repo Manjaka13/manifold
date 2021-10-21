@@ -4,13 +4,14 @@
 
 import axios from "axios";
 import ws from "./ws";
+import { IHttp } from "../types";
 import { BASE_URL, AXIOS_HEADERS } from "../helpers/const";
 
 // Create URL for API call
 const _getUrl = (endpoint: string, id: any): string =>
 	`${BASE_URL}/${ws[endpoint]}/${id || ""}`;
 
-const http: object = {
+const http: IHttp = {
 	// For 'GET' calls
 	get: (endpoint = "", params = null, id = null): Promise<any> => {
 		return new Promise((resolve, reject) => {

@@ -7,3 +7,14 @@ export interface IAxiosHeaders {
 	Accept: string;
 	"Content-Type": string;
 }
+
+// User
+export interface IUser {
+	name: string;
+}
+
+// Http service object type
+export interface IHttp {
+	get: Function;
+	post: Function;
+}

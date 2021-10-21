@@ -1,10 +1,10 @@
 /*
-    Loader for waiting
+    Loader for waiting process
 */
 
 import React from "react";
 
-export default function Loader(): JSX.Element {
+const Loader: React.FC = (): JSX.Element => {
 	return (
 		<div className="loader">
 			<div></div>
@@ -13,4 +13,6 @@ export default function Loader(): JSX.Element {
 			<div></div>
 		</div>
 	);
-}
+};
+
+export default Loader;

@@ -8,6 +8,10 @@
 	align-items: center;
 	width: 310px;
 
+	@media only screen and (max-width: 400px) {
+		width: 260px;
+	}
+
 	.car-box {
 		width: calc(100% - 40px);
 		background: rgb(241, 241, 241);
@@ -34,17 +38,27 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		@include transition;
 		background: white;
 		cursor: pointer;
+		@include transition;
 		&:hover {
 			background: rgb(245, 245, 245);
+		}
+		&:active {
+			box-shadow: 0px 0px 10px rgb(200, 200, 200) inset;
+		}
+		@media only screen and (max-width: 400px) {
+			width: 40px;
+			height: 40px;
 		}
 	}
 
 	.place-label {
 		font-size: 7pt;
 		padding: 10px 0 0 0;
+		@media only screen and (max-width: 400px) {
+			display: none;
+		}
 	}
 
 	.space {
@@ -75,11 +89,30 @@
 	}
 
 	.driver,
-	.person {
+	.person,
+	.user-seat {
 		background: rgb(225, 225, 225);
 		cursor: initial;
+		pointer-events: none;
 		&:hover {
 			background: rgb(225, 225, 225);
+		}
+		&:active {
+			box-shadow: 0px 0px 1px black;
+		}
+	}
+
+	.person,
+	.user-seat {
+		pointer-events: auto;
+	}
+
+	.user-seat {
+		cursor: pointer;
+		background: green;
+		color: white;
+		&:hover {
+			background: green;
 		}
 	}
 }

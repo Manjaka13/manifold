@@ -24,7 +24,6 @@
 			width: 90%;
 			margin: 20px 40px;
 		}
-
 		@media only screen and (max-width: 800px) {
 			width: 100%;
 			margin: 0;
@@ -69,6 +68,12 @@
 		&:last-child {
 			margin-bottom: 20px;
 		}
+		@media only screen and (max-width: 400px) {
+			width: 100%;
+			margin: 0;
+			box-shadow: none;
+			background: transparent;
+		}
 	}
 
 	.car-image {
@@ -91,6 +96,9 @@
 		}
 		@media only screen and (max-width: 800px) {
 			width: calc(100% - 20px);
+		}
+		@media only screen and (max-width: 400px) {
+			width: 240px;
 		}
 	}
 

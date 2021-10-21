@@ -35,3 +35,7 @@ export interface IPropsInput {
 	atInput?: Function | undefined;
 	list?: Array<string> | undefined;
 }
+
+export interface IPropsCar {
+	callingName?: string | undefined;
+}

@@ -81,7 +81,6 @@ export default function App(): JSX.Element {
 							name="phone"
 							placeholder="Numéro de téléphone"
 							label="Téléphone"
-							required
 							atInput={handleInput}
 						/>
 						{/* National ID number */}
@@ -132,12 +131,14 @@ export default function App(): JSX.Element {
 							</select>
 						</div>
 					</div> */}
-					<div className="group group-car">
-						<Car />
-						<figure className="car-image">
-							<img className="image" src="assets/car.webp" alt="Car representation" />
-						</figure>
-					</div>
+					{input.callingName && input.callingName.length > 0 && (
+						<div className="group group-car">
+							<Car callingName={input.callingName} />
+							<figure className="car-image">
+								<img className="image" src="assets/car.jpg" alt="Car representation" />
+							</figure>
+						</div>
+					)}
 				</div>
 
 				{/* Submit params */}

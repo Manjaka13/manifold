@@ -22,7 +22,6 @@ const Car: React.FC<IPropsCar> = ({ callingName }): JSX.Element => {
 		["", "", "", "space", ""],
 		["Kanto", "", "", "", ""],
 	]);
-	const [selectedSeat, setSelectedSeat] = useState<Array<number>>([-1, -1]);
 
 	// Select a seat
 	const selectSeat = (position: Array<number>): void => {

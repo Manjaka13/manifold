@@ -1,42 +1,46 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Loader from "./Loader";
 import Car from "./Car";
+import Input from "./Input";
+import { IUser } from "../types";
 
 export default function App(): JSX.Element {
+	const [input, setInput] = useState<IUser>({
+		name: "",
+		callingName: "",
+		carNumber: "8981 TAB",
+	});
+	const [carList] = useState<Array<string>>([
+		"1267 TBN",
+		"8981 TAB",
+		"6929 TAG",
+	]);
 	const [loading, setLoading] = useState<Boolean>(false);
 	const [caption, setCaption] = useState<string>("");
-	// Input refs
-	const refName = useRef<HTMLInputElement>(null);
-	const refTelephone = useRef<HTMLInputElement>(null);
-	const refCIN = useRef<HTMLInputElement>(null);
-	const refAppelation = useRef<HTMLInputElement>(null);
-	const refBirthday = useRef<HTMLInputElement>(null);
-	const refDestination = useRef<HTMLInputElement>(null);
-	const refTravelDate = useRef<HTMLInputElement>(null);
-	const refCar = useRef<HTMLSelectElement>(null);
 
 	// When form is submitted
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setCaption("");
 		setLoading(true);
-		// Build the params to be sent
-		const params = {
-			name: refName?.current?.value,
-			telephone: refTelephone?.current?.value,
-			appelation: refAppelation?.current?.value,
-			birthday: refBirthday?.current?.value,
-			destination: refDestination?.current?.value,
-			travelDate: refTravelDate?.current?.value,
-			car: refCar?.current?.value,
-		};
 		console.clear();
-		console.log(params);
+		console.table(input);
 		// Simulates waiting process
 		setTimeout(() => {
 			setLoading(false);
 			setCaption("Personne inscrite avec succès !");
 		}, 1500);
+	};
+
+	// Save our inputs the state
+	const handleInput = (value: string | number | null, field: string): void => {
+		const newInput = {
+			...input,
+			[field]: value,
+		};
+		setInput(newInput);
+		console.clear();
+		console.table(newInput);
 	};
 
 	return (
@@ -47,102 +51,78 @@ export default function App(): JSX.Element {
 					<h2 className="underline input-group-title">Informations personnelles</h2>
 					<div className="group">
 						{/* First name and last name */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="name">
-								Nom entier *
-							</label>
-							<input
-								className="input"
-								name="name"
-								type="text"
-								placeholder="Nom et prénom"
-								ref={refName}
-								required
-							/>
-						</div>
+						<Input
+							defaultValue="hello"
+							name="name"
+							placeholder="Nom et prénom"
+							label="Nom entier *"
+							required
+							atInput={handleInput}
+						/>
 						{/* Calling name */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="appelation">
-								Appelation *
-							</label>
-							<input
-								className="input"
-								name="appelation"
-								type="text"
-								placeholder="Comment on vous appelle ?"
-								ref={refAppelation}
-								required
-							/>
-						</div>
+						<Input
+							name="callingName"
+							placeholder="Comment on vous appelle ?"
+							label="Appelation *"
+							required
+							atInput={handleInput}
+						/>
 					</div>
 					<div className="group">
 						{/* Birthday */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="birthday">
-								Date de naissance
-							</label>
-							<input className="input" name="birthday" type="date" ref={refBirthday} />
-						</div>
+						<Input
+							type="date"
+							name="birthday"
+							label="Date de naissance"
+							atInput={handleInput}
+						/>
 						{/* Phone */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="telephone">
-								Téléphone
-							</label>
-							<input
-								className="input"
-								name="telephone"
-								type="text"
-								placeholder="Numéro de téléphone"
-								ref={refTelephone}
-							/>
-						</div>
+						<Input
+							name="phone"
+							placeholder="Numéro de téléphone"
+							label="Téléphone"
+							required
+							atInput={handleInput}
+						/>
 						{/* National ID number */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="CIN">
-								CIN
-							</label>
-							<input
-								className="input"
-								name="CIN"
-								type="text"
-								placeholder="Numéro de CIN"
-								ref={refCIN}
-							/>
-						</div>
+						<Input
+							name="cin"
+							placeholder="CIN"
+							label="Numéro de CIN"
+							atInput={handleInput}
+						/>
 					</div>
 				</div>
 				<div className="input-group">
 					<h2 className="underline input-group-title">Informations de voyage</h2>
 					<div className="group">
 						{/* Travel date */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="travelDate">
-								Date du voyage *
-							</label>
-							<input
-								className="input"
-								name="travelDate"
-								type="date"
-								ref={refTravelDate}
-								required
-							/>
-						</div>
+						<Input
+							type="date"
+							name="travelDate"
+							placeholder="Date du voyage *"
+							required
+							atInput={handleInput}
+						/>
 						{/* Destination place */}
-						<div className="input-box">
-							<label className="bold label" htmlFor="destination">
-								Destination
-							</label>
-							<input
-								className="input"
-								name="destination"
-								type="text"
-								placeholder="Lieu de destination"
-								ref={refDestination}
-							/>
-						</div>
+						<Input
+							name="destination"
+							placeholder="Adresse de destination"
+							label="Destination *"
+							required
+							atInput={handleInput}
+						/>
 					</div>
 					{/* The car */}
-					<div className="group">
+					<Input
+						type="select"
+						name="carNumber"
+						defaultValue={input.carNumber}
+						label="Numéro de la voiture *"
+						list={carList}
+						atInput={handleInput}
+					/>
+					{/* <div className="group">
 						<div className="input-box">
 							<label className="bold label" htmlFor="car">
 								Numéro de la voiture *
@@ -151,7 +131,7 @@ export default function App(): JSX.Element {
 								<option value="12Y8912">12Y8912</option>
 							</select>
 						</div>
-					</div>
+					</div> */}
 					<div className="group group-car">
 						<Car />
 						<figure className="car-image">
@@ -161,11 +141,12 @@ export default function App(): JSX.Element {
 				</div>
 
 				{/* Submit params */}
-				{!loading && (
-					<button className="submit" type="submit">
-						S'inscrire
-					</button>
-				)}
+				<button
+					className={loading ? "button button--disabled" : "button"}
+					type="submit"
+				>
+					S'inscrire
+				</button>
 
 				{/* Loading */}
 				{loading && <Loader />}

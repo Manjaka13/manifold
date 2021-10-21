@@ -16,7 +16,7 @@ library.add(faUser, faUserTie);
 const Car: React.FC = (): JSX.Element => {
 	let placeIndex = 0;
 	// This represents the car places
-	const [places, setPlaces] = useState<Array<Array<string>>>([
+	const [places] = useState<Array<Array<string>>>([
 		["driver", "", ""],
 		["", "", "", "", ""],
 		["", "", "", "space", ""],
@@ -55,7 +55,11 @@ const Car: React.FC = (): JSX.Element => {
 			}
 			placeIndex++;
 		}
-		return <div className="row">{arr}</div>;
+		return (
+			<div className="row" key={uniqueKey()}>
+				{arr}
+			</div>
+		);
 	});
 
 	return (

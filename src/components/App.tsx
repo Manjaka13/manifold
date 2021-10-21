@@ -99,6 +99,7 @@ export default function App(): JSX.Element {
 						<Input
 							type="date"
 							name="travelDate"
+							label="Départ *"
 							placeholder="Date du voyage *"
 							required
 							atInput={handleInput}
